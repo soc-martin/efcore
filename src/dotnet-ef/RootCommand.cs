@@ -21,6 +21,7 @@ internal class RootCommand : CommandBase
     private CommandOption? _runtime;
     private CommandOption? _msbuildprojectextensionspath;
     private CommandOption? _noBuild;
+    private CommandOption? _noRestore;
     private CommandOption? _help;
     private IList<string>? _args;
     private IList<string>? _applicationArgs;
@@ -40,6 +41,7 @@ internal class RootCommand : CommandBase
         _runtime = options.Runtime;
         _msbuildprojectextensionspath = options.MSBuildProjectExtensionsPath;
         _noBuild = options.NoBuild;
+        _noRestore = options.NoBuild;
 
         command.VersionOption("--version", GetVersion);
         _help = command.Option("-h|--help", description: null);
@@ -76,7 +78,7 @@ internal class RootCommand : CommandBase
             _configuration!.Value(),
             _runtime!.Value());
 
-        if (!_noBuild!.HasValue())
+        if (!_noBuild!.HasValue(_noRestore!.HasValue()))
         {
             Reporter.WriteInformation(Resources.BuildStarted);
             startupProject.Build();

@@ -134,7 +134,7 @@ internal class Project
         };
     }
 
-    public void Build()
+    public void Build(bool noRestore)
     {
         var args = new List<string> { "build" };
 
@@ -160,6 +160,11 @@ internal class Project
         {
             args.Add("--runtime");
             args.Add(_runtime);
+        }
+
+        if (noRestore)
+        {
+            args.Add("--no-restore");
         }
 
         args.Add("/verbosity:quiet");

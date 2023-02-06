@@ -332,6 +332,12 @@ namespace Microsoft.EntityFrameworkCore.Tools.Properties
             => GetString("NoBuildDescription");
 
         /// <summary>
+        ///     Don't build the project. Intended to be used when the build is up-to-date.
+        /// </summary>
+        public static string NoRestoreDescription
+            => GetString("NoRestoreDescription");
+
+        /// <summary>
         ///     Don't colorize output.
         /// </summary>
         public static string NoColorDescription

@@ -18,6 +18,7 @@ internal class ProjectOptions
     public CommandOption? MSBuildProjectExtensionsPath { get; private set; }
     public CommandOption? NoBuild { get; private set; }
 
+    public CommandOption? NoRestore { get; private set; }
     public void Configure(CommandLineApplication command)
     {
         Project = command.Option("-p|--project <PROJECT>", Resources.ProjectDescription);
@@ -27,5 +28,6 @@ internal class ProjectOptions
         Runtime = command.Option("--runtime <RUNTIME_IDENTIFIER>", Resources.RuntimeDescription);
         MSBuildProjectExtensionsPath = command.Option("--msbuildprojectextensionspath <PATH>", Resources.ProjectExtensionsDescription);
         NoBuild = command.Option("--no-build", Resources.NoBuildDescription);
+        NoRestore = command.Option("--no-restore", Resources.NoRestoreDescription);
     }
 }

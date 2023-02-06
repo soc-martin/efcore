@@ -270,6 +270,9 @@
   <data name="NoBuildDescription" xml:space="preserve">
     <value>Don't build the project. Intended to be used when the build is up-to-date.</value>
   </data>
+  <data name="NoRestoreDescription" xml:space="preserve">
+    <value>Doesn't execute an implicit restore during build. Intended to be used when the restore is up-to-date.</value>
+  </data>
   <data name="NoColorDescription" xml:space="preserve">
     <value>Don't colorize output.</value>
   </data>
