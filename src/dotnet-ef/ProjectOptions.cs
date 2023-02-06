@@ -15,6 +15,7 @@ namespace Microsoft.EntityFrameworkCore.Tools
         public CommandOption? Runtime { get; private set; }
         public CommandOption? MSBuildProjectExtensionsPath { get; private set; }
         public CommandOption? NoBuild { get; private set; }
+        public CommandOption? NoRestore { get; private set; }
 
         public void Configure(CommandLineApplication command)
         {
@@ -25,6 +26,7 @@ namespace Microsoft.EntityFrameworkCore.Tools
             Runtime = command.Option("--runtime <RUNTIME_IDENTIFIER>", Resources.RuntimeDescription);
             MSBuildProjectExtensionsPath = command.Option("--msbuildprojectextensionspath <PATH>", Resources.ProjectExtensionsDescription);
             NoBuild = command.Option("--no-build", Resources.NoBuildDescription);
+            NoRestore = command.Option("--no-restore", Resources.NoRestoreDescription);
         }
     }
 }

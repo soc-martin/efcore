@@ -25,6 +25,7 @@ namespace Microsoft.EntityFrameworkCore.Tools
         private CommandOption? _runtime;
         private CommandOption? _msbuildprojectextensionspath;
         private CommandOption? _noBuild;
+        private CommandOption? _noRestore;
         private CommandOption? _help;
         private IList<string>? _args;
         private IList<string>? _applicationArgs;
@@ -44,6 +45,7 @@ namespace Microsoft.EntityFrameworkCore.Tools
             _runtime = options.Runtime;
             _msbuildprojectextensionspath = options.MSBuildProjectExtensionsPath;
             _noBuild = options.NoBuild;
+            _noRestore = options.NoBuild;
 
             command.VersionOption("--version", GetVersion);
             _help = command.Option("-h|--help", description: null);
@@ -83,7 +85,7 @@ namespace Microsoft.EntityFrameworkCore.Tools
             if (!_noBuild!.HasValue())
             {
                 Reporter.WriteInformation(Resources.BuildStarted);
-                startupProject.Build();
+                startupProject.Build(_noRestore!.HasValue());
                 Reporter.WriteInformation(Resources.BuildSucceeded);
             }
 
